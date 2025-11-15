@@ -17,8 +17,8 @@ jobs:
     
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
-        # ubuntu-latest geçici olarak devre dışı (build hatası için)
+        os: [macos-latest]
+        # Sadece Mac build (Windows local'de alınıyor)
     
     steps:
       - name: Checkout Code
