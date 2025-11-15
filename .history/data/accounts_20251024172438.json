@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "domainId": "1",
+    "name": "Dan Peters",
+    "email": "dan.peters@readershouse.co.uk",
+    "displayName": "Dan Peters",
+    "active": true,
+    "stats": {
+      "totalSent": 0,
+      "successful": 0,
+      "failed": 0
+    },
+    "createdAt": "2025-10-24T20:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "domainId": "1",
+    "name": "Ben Alan",
+    "email": "ben.alan@readershouse.co.uk",
+    "displayName": "Ben Alan",
+    "active": true,
+    "stats": {
+      "totalSent": 0,
+      "successful": 0,
+      "failed": 0
+    },
+    "createdAt": "2025-10-24T20:05:00.000Z"
+  }
+]

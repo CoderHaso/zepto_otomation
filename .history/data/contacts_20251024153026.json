@@ -1,0 +1,15 @@
+[
+  {
+    "id": "1",
+    "domainId": "1",
+    "name": "Test",
+    "surname": "User",
+    "full_name": "Test User",
+    "email": "dan.peters@readershouse.co.uk",
+    "link": "",
+    "aaweb": "",
+    "web": "",
+    "facebook_resolved": "",
+    "createdAt": "2025-10-24T20:00:00.000Z"
+  }
+]

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazar İletişim Paneli</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📧 Yazar İletişim Paneli</h1>
+            <nav>
+                <button class="nav-btn active" data-tab="templates">Şablonlar</button>
+                <button class="nav-btn" data-tab="contacts">Kişiler</button>
+                <button class="nav-btn" data-tab="send">Gönderim</button>
+                <button class="nav-btn" data-tab="reports">Raporlar</button>
+                <button class="nav-btn" data-tab="settings">Ayarlar</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Şablonlar Tab -->
+            <div id="templates" class="tab-content active">
+                <div class="toolbar">
+                    <button id="new-template">+ Yeni Şablon</button>
+                    <button id="add-zepto-template">📥 ZeptoMail Template Ekle</button>
+                    <button id="refresh-templates">🔄 Yenile</button>
+                </div>
+                <div class="template-list">
+                    <div class="template-item">
+                        <h3>Şablon bulunamadı</h3>
+                        <p>Template yüklemek için "🔄 Yenile" butonuna tıklayın.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kişiler Tab -->
+            <div id="contacts" class="tab-content">
+                <div class="toolbar">
+                    <button id="add-contact">+ Kişi Ekle</button>
+                    <button id="import-csv">📁 CSV Yükle</button>
+                    <button id="export-csv">💾 CSV İndir</button>
+                </div>
+                <div class="contact-list">
+                    <table id="contacts-table">
+                        <thead>
+                            <tr>
+                                <th>Ad Soyad</th>
+                                <th>E-posta</th>
+                                <th>Tarih</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Gönderim Tab -->
+            <div id="send" class="tab-content">
+                <div class="send-form">
+                    <div style="background: #e8f5e9; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #4caf50;">
+                        <h3 style="margin: 0 0 0.5rem 0;">🎉 Hızlı Test</h3>
+                        <p style="margin: 0 0 1rem 0; color: #666;">
+                            Tüm ayarlar hazır! İlk template ve ilk kişi ile test maili gönderin.
+                        </p>
+                        <button id="quick-test" class="primary" style="font-size: 1.1rem; padding: 0.75rem 1.5rem;">
+                            🚀 Test Mail Gönder
+                        </button>
+                    </div>
+                    
+                    <hr style="margin: 2rem 0;">
+                    
+                    <h3>Manuel Gönderim</h3>
+                    <div class="form-group">
+                        <label>Şablon Seç:</label>
+                        <select id="template-select">
+                            <option value="">Şablon seçin...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Kişi Listesi:</label>
+                        <select id="contact-group-select">
+                            <option value="all">Tüm Kişiler</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button id="send-emails" class="primary">📤 Toplu Gönder</button>
+                    </div>
+                </div>
+                <div id="send-progress" class="hidden">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">Gönderiliyor...</div>
+                </div>
+            </div>
+
+            <!-- Raporlar Tab -->
+            <div id="reports" class="tab-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Toplam Gönderim</h3>
+                        <div class="stat-number" id="total-sent">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Başarılı</h3>
+                        <div class="stat-number success" id="successful-sent">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Başarısız</h3>
+                        <div class="stat-number error" id="failed-sent">0</div>
+                    </div>
+                </div>
+                <div class="report-list">
+                    <h3>Gönderim Geçmişi</h3>
+                    <table id="reports-table">
+                        <thead>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>Şablon</th>
+                                <th>Alıcı Sayısı</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Ayarlar Tab -->
+            <div id="settings" class="tab-content">
+                <div class="settings-form">
+                    <h3>🔑 API Ayarları</h3>
+                    <div class="form-group">
+                        <label>Send Mail Token (Zoho-enczapikey):</label>
+                        <input type="password" id="api-key" placeholder="Zoho-enczapikey wSsVR60gr...">
+                        <small>Mail Agent → SMTP/API → Send Mail Token 1</small>
+                    </div>
+                    <div class="form-group">
+                        <label>OAuth Token (Opsiyonel - Template Yönetimi için):</label>
+                        <input type="password" id="oauth-token" placeholder="Bearer token...">
+                        <small>Zoho Developer Console → Self Client'dan alınır. Template senkronizasyonu için gerekli.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Mail Agent Alias:</label>
+                        <input type="text" id="mail-agent" placeholder="617b792618165d06">
+                        <small>Mail Agent → SMTP/API → Mail Agent Alias</small>
+                        <button id="test-api">Test Et</button>
+                    </div>
+                    
+                    <h3>📧 Gönderici Bilgileri</h3>
+                    <div class="form-group">
+                        <label>Gönderen E-posta:</label>
+                        <input type="email" id="sender-email" placeholder="sender@domain.com">
+                        <small>Doğrulanmış domain adresiniz</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Gönderen Adı:</label>
+                        <input type="text" id="sender-name" placeholder="Gönderen Adı">
+                    </div>
+                    
+                    <h3>📁 Yerel Ayarlar</h3>
+                    <div class="form-group">
+                        <label>Şablon Klasörü:</label>
+                        <input type="text" id="template-folder" readonly>
+                        <button id="select-folder">Klasör Seç</button>
+                        <small>Şablonların yerel olarak kaydedileceği klasör</small>
+                    </div>
+                    
+                    <button id="save-settings" class="primary">💾 Ayarları Kaydet</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

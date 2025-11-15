@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeptoMail Domain Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📧 ZeptoMail Domain Manager</h1>
+            <div class="active-domain-info">
+                <span id="active-domain-name">No domain selected</span>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-tab="overview">Overview</button>
+                <button class="nav-btn" data-tab="contacts">Contacts</button>
+                <button class="nav-btn" data-tab="send">Send</button>
+                <button class="nav-btn" data-tab="queue">Queue</button>
+                <button class="nav-btn" data-tab="history">History</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <div class="section-header">
+                    <h2>📊 Domains</h2>
+                    <button id="add-domain" class="btn-primary">+ Add Domain</button>
+                </div>
+                <div id="domains-container"></div>
+
+                <!-- Domain Details (shown when domain selected) -->
+                <div id="domain-details" class="hidden">
+                    <div class="section-header">
+                        <h2>👥 Accounts/Users</h2>
+                        <button id="add-account" class="btn-primary">+ Add Account</button>
+                    </div>
+                    <div id="accounts-container"></div>
+
+                    <div class="section-header">
+                        <h2>📝 Templates</h2>
+                        <button id="add-template" class="btn-primary">+ Add Template</button>
+                    </div>
+                    <div id="templates-container"></div>
+                </div>
+            </div>
+
+            <!-- Contacts Tab -->
+            <div id="contacts" class="tab-content">
+                <div class="section-header">
+                    <h2>👤 Contact Management</h2>
+                    <div>
+                        <button id="add-contact" class="btn-primary">+ Add Contact</button>
+                        <button id="import-csv" class="btn-primary">📁 Import File</button>
+                    </div>
+                </div>
+
+                <div class="contacts-filters">
+                    <div>
+                        <label>Select Account:</label>
+                        <select id="contacts-account-filter">
+                            <option value="all">All Accounts</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Search:</label>
+                        <input type="text" id="contacts-search" placeholder="Name or email..." style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; min-width: 250px;">
+                    </div>
+                </div>
+
+                <div class="contacts-tabs">
+                    <button class="contacts-tab-btn active" data-status="all">📋 All (<span id="all-count">0</span>)</button>
+                    <button class="contacts-tab-btn" data-status="unsent">📤 Unsent (<span id="unsent-count">0</span>)</button>
+                    <button class="contacts-tab-btn" data-status="sent">✅ Sent (<span id="sent-count">0</span>)</button>
+                    <button class="contacts-tab-btn" data-status="failed">❌ Failed (<span id="failed-count">0</span>)</button>
+                </div>
+
+                <div id="contacts-list-container">
+                    <table id="contacts-list-table">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Account</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Send Tab -->
+            <div id="send" class="tab-content">
+                <h2>📤 Send Email</h2>
+                
+                <div class="send-form">
+                    <div class="form-group">
+                        <label>Select Account:</label>
+                        <select id="send-account-select">
+                            <option value="">Select account...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Template:</label>
+                        <select id="send-template-select">
+                            <option value="">Select template...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Unsent Contacts:</label>
+                        <div id="send-contacts-list">
+                            <p class="hint">Select account above</p>
+                        </div>
+                    </div>
+
+                    <div class="send-actions">
+                        <button id="send-now" class="btn-primary">🚀 Send Now</button>
+                        <button id="schedule-send" class="btn-secondary">⏰ Schedule</button>
+                    </div>
+                </div>
+
+                <div id="send-progress" class="hidden">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">Sending...</div>
+                </div>
+            </div>
+
+            <!-- Queue Tab -->
+            <div id="queue" class="tab-content">
+                <div class="section-header">
+                    <h2>⏳ Send Queue</h2>
+                    <div>
+                        <button id="refresh-queue" class="btn-secondary">🔄 Refresh</button>
+                        <button id="clear-queue" class="btn-danger">🗑️ Clear Completed</button>
+                    </div>
+                </div>
+                <div id="queue-container">
+                    <table id="queue-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Template</th>
+                                <th>Recipients</th>
+                                <th>Scheduled Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="history" class="tab-content">
+                <div class="section-header">
+                    <h2>📊 Send History</h2>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Sent</h3>
+                        <div class="stat-number" id="total-sent">0</div>
+                    </div>
+                    <div class="stat-card success">
+                        <h3>Successful</h3>
+                        <div class="stat-number" id="successful-sent">0</div>
+                    </div>
+                    <div class="stat-card error">
+                        <h3>Failed</h3>
+                        <div class="stat-number" id="failed-sent">0</div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <div>
+                        <input type="checkbox" id="select-all-history">
+                        <label for="select-all-history">Select All</label>
+                    </div>
+                    <button id="delete-selected-history" class="btn-danger">🗑️ Delete Selected</button>
+                </div>
+                
+                <div id="history-container">
+                    <table id="history-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="select-all-history-table"></th>
+                                <th>Date</th>
+                                <th>Template</th>
+                                <th>Recipients</th>
+                                <th>Successful</th>
+                                <th>Failed</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

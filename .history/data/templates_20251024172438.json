@@ -1,0 +1,25 @@
+[
+  {
+    "id": "1",
+    "domainId": "1",
+    "name": "Mülakat Daveti",
+    "templateKey": "2d6f.2377b7024864bedf.k1.3ece50f0-ae84-11f0-98e8-86f7e6aa0425.19a0704cb7f",
+    "mergeFieldMapping": {
+      "Person_name": {
+        "type": "column",
+        "value": "full_name"
+      },
+      "email": {
+        "type": "column",
+        "value": "email"
+      },
+      "account_name": {
+        "type": "auto",
+        "value": "account_name",
+        "description": "Otomatik - Gönderen hesabın adı"
+      }
+    },
+    "usageCount": 0,
+    "createdAt": "2025-10-24T20:00:00.000Z"
+  }
+]

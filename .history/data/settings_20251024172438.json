@@ -1,0 +1,11 @@
+{
+  "activeDomainId": "1",
+  "queueEnabled": true,
+  "autoProcessQueue": true,
+  "queueCheckInterval": 60000,
+  "preferences": {
+    "autoSave": true,
+    "confirmBeforeSend": false,
+    "showNotifications": true
+  }
+}

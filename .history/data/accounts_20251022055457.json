@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "name": "Readers House - Dan Peters",
+    "domain": "readershouse.co.uk",
+    "apiKey": "Zoho-enczapikey wSsVR60grxX1Cfp4yjyuIew6nAxdUlv1EhwojFWnuHWpGPrG8sdtk0GdBgSlHqQdRTFqFTcS9b4syk8F1mEIh4grzlBTXSiF9mqRe1U4J3x17qnvhDzMXm9fkhaJLokAxg1ikmVmGsAl+g==",
+    "mailAgent": "617b792618165d06",
+    "senderEmail": "dan.peters@readershouse.co.uk",
+    "senderName": "Dan Peters",
+    "host": "api.zeptomail.com",
+    "active": true,
+    "createdAt": "2025-10-21T20:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "name": "Readers House - Ben Alan",
+    "domain": "readershouse.co.uk",
+    "apiKey": "Zoho-enczapikey wSsVR60grxX1Cfp4yjyuIew6nAxdUlv1EhwojFWnuHWpGPrG8sdtk0GdBgSlHqQdRTFqFTcS9b4syk8F1mEIh4grzlBTXSiF9mqRe1U4J3x17qnvhDzMXm9fkhaJLokAxg1ikmVmGsAl+g==",
+    "mailAgent": "617b792618165d06",
+    "senderEmail": "ben.alan@readershouse.co.uk",
+    "senderName": "Ben Alan",
+    "host": "api.zeptomail.com",
+    "active": false,
+    "createdAt": "2025-10-21T20:05:00.000Z"
+  }
+]
+

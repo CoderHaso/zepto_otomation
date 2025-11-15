@@ -1,0 +1,15 @@
+[
+  {
+    "id": "1",
+    "accountId": "1",
+    "name": "Dan",
+    "surname": "Peters",
+    "full_name": "Dan Peters",
+    "email": "dan.peters@readershouse.co.uk",
+    "link": "https://linkedin.com/in/danpeters",
+    "aaweb": "https://aaweb.com/danpeters",
+    "web": "https://danpeters.com",
+    "facebook_resolved": "dan.peters.123",
+    "createdAt": "2025-10-21T20:00:00.000Z"
+  }
+]

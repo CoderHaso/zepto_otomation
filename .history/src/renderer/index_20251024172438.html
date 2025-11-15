@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeptoMail Domain Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📧 ZeptoMail Domain Manager</h1>
+            <div class="active-domain-info">
+                <span id="active-domain-name">Domain seçilmedi</span>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-tab="overview">Ana Sayfa</button>
+                <button class="nav-btn" data-tab="send">Gönderim</button>
+                <button class="nav-btn" data-tab="queue">Kuyruk</button>
+                <button class="nav-btn" data-tab="history">Geçmiş</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <div class="section-header">
+                    <h2>📊 Domains</h2>
+                    <button id="add-domain" class="btn-primary">+ Domain Ekle</button>
+                </div>
+                <div id="domains-container"></div>
+
+                <!-- Domain Details (shown when domain selected) -->
+                <div id="domain-details" class="hidden">
+                    <div class="section-header">
+                        <h2>👥 Accounts/Users</h2>
+                        <button id="add-account" class="btn-primary">+ Account Ekle</button>
+                    </div>
+                    <div id="accounts-container"></div>
+
+                    <div class="section-header">
+                        <h2>📝 Templates</h2>
+                        <button id="add-template" class="btn-primary">+ Template Ekle</button>
+                    </div>
+                    <div id="templates-container"></div>
+
+                    <div class="section-header">
+                        <h2>👤 Contacts</h2>
+                        <div>
+                            <button id="add-contact" class="btn-secondary">+ Kişi Ekle</button>
+                            <button id="import-csv" class="btn-secondary">📁 CSV Yükle</button>
+                        </div>
+                    </div>
+                    <div id="contacts-container">
+                        <table id="contacts-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="select-all-contacts"></th>
+                                    <th>Tam Ad</th>
+                                    <th>E-posta</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Send Tab -->
+            <div id="send" class="tab-content">
+                <h2>📤 Mail Gönder</h2>
+                
+                <div class="send-form">
+                    <div class="form-group">
+                        <label>Template Seç:</label>
+                        <select id="send-template-select">
+                            <option value="">Template seçin...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Seçili Kişiler: <span id="selected-contacts-count">0</span></label>
+                        <p class="hint">Ana sayfadan kişileri seçin</p>
+                    </div>
+
+                    <div id="account-assignments"></div>
+
+                    <div class="send-actions">
+                        <button id="send-now" class="btn-primary">🚀 Hemen Gönder</button>
+                        <button id="schedule-send" class="btn-secondary">⏰ Zamanla</button>
+                        <button id="add-to-queue" class="btn-secondary">➕ Kuyruğa Ekle</button>
+                    </div>
+                </div>
+
+                <div id="send-progress" class="hidden">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">Gönderiliyor...</div>
+                </div>
+            </div>
+
+            <!-- Queue Tab -->
+            <div id="queue" class="tab-content">
+                <div class="section-header">
+                    <h2>⏳ Gönderim Kuyruğu</h2>
+                    <button id="refresh-queue" class="btn-secondary">🔄 Yenile</button>
+                </div>
+                <div id="queue-container">
+                    <table id="queue-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Template</th>
+                                <th>Alıcı Sayısı</th>
+                                <th>Zamanlanmış Tarih</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="history" class="tab-content">
+                <div class="section-header">
+                    <h2>📊 Gönderim Geçmişi</h2>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Toplam Gönderim</h3>
+                        <div class="stat-number" id="total-sent">0</div>
+                    </div>
+                    <div class="stat-card success">
+                        <h3>Başarılı</h3>
+                        <div class="stat-number" id="successful-sent">0</div>
+                    </div>
+                    <div class="stat-card error">
+                        <h3>Başarısız</h3>
+                        <div class="stat-number" id="failed-sent">0</div>
+                    </div>
+                </div>
+
+                <div id="history-container">
+                    <table id="history-table">
+                        <thead>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>Template</th>
+                                <th>Alıcı Sayısı</th>
+                                <th>Başarılı</th>
+                                <th>Başarısız</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

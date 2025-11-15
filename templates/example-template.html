@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mülakat Daveti</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+        }
+        .highlight {
+            background: #3498db;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📧 Mülakat Daveti</h1>
+    </div>
+    
+    <div class="content">
+        <p>Sayın <strong>{Person_name}</strong>,</p>
+        
+        <p>Başvurunuz değerlendirilmiş olup, mülakata davet edilmektesiniz.</p>
+        
+        <div class="highlight">
+            <strong>Mülakat Tarihi: {Interview_date}</strong>
+        </div>
+        
+        <p><strong>Mülakat Detayları:</strong></p>
+        <ul>
+            <li>📅 Tarih: {Interview_date}</li>
+            <li>🕐 Saat: 14:00</li>
+            <li>📍 Konum: Şirket Merkezi</li>
+            <li>⏱️ Süre: Yaklaşık 45 dakika</li>
+        </ul>
+        
+        <p><strong>Yanınızda Getirmeniz Gerekenler:</strong></p>
+        <ul>
+            <li>Kimlik belgesi</li>
+            <li>CV'nizin güncel hali</li>
+            <li>Referans mektupları (varsa)</li>
+            <li>Portfolio/çalışma örnekleri</li>
+        </ul>
+        
+        <p>Herhangi bir sorunuz olması durumunda <a href="mailto:{email}">{email}</a> adresinden bize ulaşabilirsiniz.</p>
+        
+        <p>Mülakatınızda başarılar dileriz!</p>
+        
+        <div class="footer">
+            <p>Saygılarımızla,<br>
+            <strong>İnsan Kaynakları Departmanı</strong><br>
+            ABC Şirketi</p>
+        </div>
+    </div>
+</body>
+</html>

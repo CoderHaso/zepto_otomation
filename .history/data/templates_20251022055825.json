@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "Mülakat Daveti",
+    "accountId": "1",
+    "templateKey": "2d6f.2377b7024864bedf.k1.3ece50f0-ae84-11f0-98e8-86f7e6aa0425.19a0704cb7f",
+    "mergeFieldMapping": {
+      "Person_name": {
+        "type": "column",
+        "value": "full_name"
+      },
+      "email": {
+        "type": "column",
+        "value": "email"
+      },
+      "Interview_date": {
+        "type": "text",
+        "value": "2025-10-25"
+      }
+    },
+    "createdAt": "2025-10-21T20:00:00.000Z"
+  }
+]
