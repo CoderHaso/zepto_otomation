@@ -40,11 +40,18 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    show: false, // İlk başta gizli, hazır olunca göster
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
-    },
-    icon: path.join(__dirname, '../assets/icon.png')
+    }
+    // icon yolunu kaldırdık (dosya yoksa crash oluyor)
+  });
+
+  // Pencere hazır olunca göster
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+    mainWindow.focus();
   });
 
   mainWindow.loadFile('src/renderer/index.html');
@@ -52,6 +59,11 @@ function createWindow() {
   if (process.argv.includes('--dev')) {
     mainWindow.webContents.openDevTools();
   }
+  
+  // Pencere kapatıldığında null yap
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
 }
 
 function startServer() {
