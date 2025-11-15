@@ -1,6 +1,6 @@
 {
   "name": "yazar-iletisim-paneli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "ZeptoMail API ile e-posta şablon yönetimi ve gönderim uygulaması",
   "main": "src/main.js",
   "scripts": {
