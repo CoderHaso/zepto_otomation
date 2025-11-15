@@ -1,6 +1,6 @@
 # 📧 ZeptoMail Domain Manager
 
-![Build Status](https://github.com/KULLANICI_ADI/zepto_otomation/actions/workflows/build.yml/badge.svg)
+![Build Status](https://github.com/CoderHaso/zepto_otomation/actions/workflows/build.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-blue)
 
@@ -352,7 +352,7 @@ Hayır! Sadece Send Token yeterli.
 
 ### Hazır Build'ler
 
-[**Releases**](https://github.com/KULLANICI_ADI/zepto_otomation/releases) sayfasından en son versiyonu indirebilirsiniz:
+[**Releases**](https://github.com/CoderHaso/zepto_otomation/releases) sayfasından en son versiyonu indirebilirsiniz:
 
 | Platform | Dosya | Açıklama |
 |----------|-------|----------|
@@ -388,7 +388,7 @@ Hayır! Sadece Send Token yeterli.
 
 ```bash
 # Projeyi klonla
-git clone https://github.com/KULLANICI_ADI/zepto_otomation.git
+git clone https://github.com/CoderHaso/zepto_otomation.git
 cd zepto_otomation
 
 # Bağımlılıkları yükle
